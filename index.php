@@ -1,67 +1,47 @@
 <?php
-require 'config.php';
+require 'vendor/autoload.php'; // charge le SDK Azure
+require 'config.php'; // ta config PDO et autre
 
-$uploadDir = __DIR__ . '/uploads/';
-$uploadUrl = 'uploads/';
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
-if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
-}
+// Connexion au blob storage Azure
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=TON_ACCOUNT_NAME;AccountKey=TON_ACCOUNT_KEY;EndpointSuffix=core.windows.net";
+$containerName = "uploads";
+
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $file = $_FILES['file'];
     $filename = basename($file['name']);
-    $targetPath = $uploadDir . $filename;
 
-    if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+    try {
+        // Ouvre le fichier temporaire pour lecture
+        $content = fopen($file['tmp_name'], "r");
+
+        // Upload du fichier vers Azure Blob Storage
+        $blobClient->createBlockBlob($containerName, $filename, $content);
+
+        // Stocke l'URL publique ou URL avec SAS si nécessaire
+        $blobUrl = "https://TON_ACCOUNT_NAME.blob.core.windows.net/$containerName/$filename";
+
+        // Enregistre dans ta base de données
         $stmt = $pdo->prepare('INSERT INTO fichiers (nom, chemin, taille) VALUES (?, ?, ?)');
         $stmt->execute([
             $filename,
-            $uploadUrl . $filename,
+            $blobUrl,
             $file['size']
         ]);
-        $message = "Fichier uploadé avec succès.";
-    } else {
-        $message = "Erreur lors de l'upload.";
+
+        $message = "Fichier uploadé avec succès sur Azure Blob Storage.";
+
+    } catch(ServiceException $e) {
+        $message = "Erreur lors de l'upload sur Azure : " . $e->getMessage();
     }
 }
 
+// Récupération des fichiers de la BDD comme avant
 $fichiers = $pdo->query('SELECT * FROM fichiers ORDER BY date_upload DESC')->fetchAll();
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Gestion des fichiers</title>
-</head>
-<body>
-    <h1>Uploader un fichier</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" required>
-        <button type="submit">Envoyer</button>
-    </form>
-
-    <p><?= $message ?></p>
-
-    <h2>Fichiers disponibles</h2>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>Nom</th>
-            <th>Taille</th>
-            <th>Date</th>
-            <th>Télécharger</th>
-        </tr>
-        <?php foreach ($fichiers as $f): ?>
-            <tr>
-                <td><?= htmlspecialchars($f['nom']) ?></td>
-                <td><?= round($f['taille'] / 1024, 2) ?> Ko</td>
-                <td><?= $f['date_upload'] ?></td>
-                <td><a href="<?= htmlspecialchars($f['chemin']) ?>" download>Télécharger</a></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</body>
-</html>
