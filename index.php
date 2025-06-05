@@ -6,7 +6,7 @@ use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Connexion au blob storage Azure
-$connectionString = "DefaultEndpointsProtocol=https;AccountName=TON_ACCOUNT_NAME;AccountKey=TON_ACCOUNT_KEY;EndpointSuffix=core.windows.net";
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=noeltheostockage_1749126671563;AccountKey=BsY1hen4QgxqoPDYSKHam7J79XQL45A6xy6DE3knrxOGcQeUYEnak55r3LOnlTfTnG/PoyWlShTm+AStn1mEiw==;EndpointSuffix=core.windows.net";
 $containerName = "uploads";
 
 $blobClient = BlobRestProxy::createBlobService($connectionString);
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         $blobClient->createBlockBlob($containerName, $filename, $content);
 
         // Stocke l'URL publique ou URL avec SAS si nécessaire
-        $blobUrl = "https://TON_ACCOUNT_NAME.blob.core.windows.net/$containerName/$filename";
+        $blobUrl = "https://noeltheostockage_1749126671563.blob.core.windows.net/$containerName/$filename";
 
         // Enregistre dans ta base de données
         $stmt = $pdo->prepare('INSERT INTO fichiers (nom, chemin, taille) VALUES (?, ?, ?)');
