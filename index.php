@@ -9,12 +9,7 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Accéder aux variables d'environnement
-$accountName = $_ENV['AZURE_ACCOUNT_NAME'];
-$accountKey = $_ENV['AZURE_ACCOUNT_KEY'];
-$containerName = $_ENV['AZURE_CONTAINER_NAME'];
-
-$connectionString = "DefaultEndpointsProtocol=https;AccountName=$accountName;AccountKey=$accountKey;EndpointSuffix=core.windows.net";
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=noeltheostockage;AccountKey=BsY1hen4QgxqoPDYSKHam7J79XQL45A6xy6DE3knrxOGcQeUYEnak55r3LOnlTfTnG/PoyWlShTm+AStn1mEiw==;EndpointSuffix=core.windows.net";
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $message = '';
@@ -27,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     try {
         $content = fopen($file['tmp_name'], "r");
         $blobClient->createBlockBlob($containerName, $filename, $content);
-        $blobUrl = "https://$accountName.blob.core.windows.net/$containerName/$filename";
+        $blobUrl = "https://noeltheostockage.blob.core.windows.net/noeltheocontainer/$filename";
 
         $stmt = $pdo->prepare('INSERT INTO fichiers (nom, chemin, taille) VALUES (?, ?, ?)');
         $stmt->execute([$filename, $blobUrl, $file['size']]);
