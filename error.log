@@ -1,0 +1,74 @@
+[06-Jun-2025 07:31:52 UTC] PHP Fatal error:  Uncaught RuntimeException: The provided account key 'BsY1...==' is not a valid base64 string. It has to pass the check 'base64_decode(<user_account_key>, true)'. in C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php:112
+Stack trace:
+#0 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\ServiceSettings.php(133): MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::{closure:MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::init():107}('BsY1...==')
+#1 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\ServiceSettings.php(273): MicrosoftAzure\Storage\Common\Internal\ServiceSettings::{closure:MicrosoftAzure\Storage\Common\Internal\ServiceSettings::getValidator():123}(Array)
+#2 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php(387): MicrosoftAzure\Storage\Common\Internal\ServiceSettings::matchedSpecification(Array, Object(Closure), Object(Closure))
+#3 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-blob\src\Blob\BlobRestProxy.php(135): MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::createFromConnectionString('DefaultEndpoint...')
+#4 C:\Users\tnoel\Cours\ProjetInfra1\index.php(27): MicrosoftAzure\Storage\Blob\BlobRestProxy::createBlobService('DefaultEndpoint...')
+#5 {main}
+  thrown in C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php on line 112
+[06-Jun-2025 07:31:52 UTC] PHP Fatal error:  Uncaught RuntimeException: The provided account key 'BsY1...==' is not a valid base64 string. It has to pass the check 'base64_decode(<user_account_key>, true)'. in C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php:112
+Stack trace:
+#0 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\ServiceSettings.php(133): MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::{closure:MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::init():107}('BsY1...==')
+#1 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\ServiceSettings.php(273): MicrosoftAzure\Storage\Common\Internal\ServiceSettings::{closure:MicrosoftAzure\Storage\Common\Internal\ServiceSettings::getValidator():123}(Array)
+#2 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php(387): MicrosoftAzure\Storage\Common\Internal\ServiceSettings::matchedSpecification(Array, Object(Closure), Object(Closure))
+#3 C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-blob\src\Blob\BlobRestProxy.php(135): MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings::createFromConnectionString('DefaultEndpoint...')
+#4 C:\Users\tnoel\Cours\ProjetInfra1\index.php(27): MicrosoftAzure\Storage\Blob\BlobRestProxy::createBlobService('DefaultEndpoint...')
+#5 {main}
+  thrown in C:\Users\tnoel\Cours\ProjetInfra1\vendor\microsoft\azure-storage-common\src\Common\Internal\StorageServiceSettings.php on line 112
+[06-Jun-2025 07:38:48 UTC] Erreur générale : cURL error 6: Could not resolve host: noeltheostockage_1749126671563.blob.core.windows.net (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage_1749126671563.blob.core.windows.net/uploads/group_project.pdf
+[06-Jun-2025 07:40:22 UTC] Erreur générale : cURL error 6: Could not resolve host: noeltheostockage_1749126671563.blob.core.windows.net (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage_1749126671563.blob.core.windows.net/uploads/group_project.pdf
+[06-Jun-2025 07:41:20 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/group_project.pdf
+[06-Jun-2025 07:41:23 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/group_project.pdf
+[06-Jun-2025 07:41:29 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:47:04 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:47:17 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:49:08 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:49:14 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:50:08 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:53:01 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:53:32 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:53:47 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:57:53 UTC] Erreur générale : cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://noeltheostockage.blob.core.windows.net/uploads/TP-Tests.pdf
+[06-Jun-2025 07:58:58 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\tnoel\Cours\ProjetInfra1\config.php:2
+Stack trace:
+#0 C:\Users\tnoel\Cours\ProjetInfra1\config.php(2): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue))
+#1 C:\Users\tnoel\Cours\ProjetInfra1\index.php(32): require('C:\\Users\\tnoel\\...')
+#2 {main}
+  thrown in C:\Users\tnoel\Cours\ProjetInfra1\config.php on line 2
+[06-Jun-2025 07:59:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\tnoel\Cours\ProjetInfra1\config.php:2
+Stack trace:
+#0 C:\Users\tnoel\Cours\ProjetInfra1\config.php(2): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue))
+#1 C:\Users\tnoel\Cours\ProjetInfra1\index.php(32): require('C:\\Users\\tnoel\\...')
+#2 {main}
+  thrown in C:\Users\tnoel\Cours\ProjetInfra1\config.php on line 2
+[06-Jun-2025 07:59:50 UTC] Erreur Azure : Fail:
+Code: 404
+Value: The specified container does not exist.
+details (if any): ﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>ContainerNotFound</Code><Message>The specified container does not exist.
+RequestId:c1eea3f7-001e-0055-54b8-d6d366000000
+Time:2025-06-06T07:59:50.6790307Z</Message></Error>.
+[06-Jun-2025 08:00:42 UTC] Erreur Azure : 404 - Fail:
+Code: 404
+Value: The specified container does not exist.
+details (if any): ﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>ContainerNotFound</Code><Message>The specified container does not exist.
+RequestId:05b7688d-d01e-0034-52b9-d6f025000000
+Time:2025-06-06T08:00:42.6177833Z</Message></Error>.
+[06-Jun-2025 09:11:07 UTC] Erreur générale : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:07 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:07 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:17 UTC] Erreur générale : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:17 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:17 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:25 UTC] Erreur générale : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:25 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:26 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:27 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:38 UTC] Erreur générale : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:38 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:11:39 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:12:00 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:12:01 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:12:15 UTC] Erreur générale : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:12:15 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
+[06-Jun-2025 09:12:15 UTC] Erreur base de données : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theonoelmysql.fichiers' doesn't exist
