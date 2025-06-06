@@ -1,12 +1,16 @@
 <?php
 require 'vendor/autoload.php'; // charge le SDK Azure
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 require 'config.php'; // ta config PDO et autre
 
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Connexion au blob storage Azure
-$connectionString = "DefaultEndpointsProtocol=https;AccountName=noeltheostockage_1749126671563;AccountKey=BsY1hen4QgxqoPDYSKHam7J79XQL45A6xy6DE3knrxOGcQeUYEnak55r3LOnlTfTnG/PoyWlShTm+AStn1mEiw==;EndpointSuffix=core.windows.net";
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=TON_ACCOUNT_NAME;AccountKey=TON_ACCOUNT_KEY;EndpointSuffix=core.windows.net";
 $containerName = "uploads";
 
 $blobClient = BlobRestProxy::createBlobService($connectionString);
