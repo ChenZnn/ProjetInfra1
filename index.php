@@ -1,44 +1,22 @@
 <?php
-
-$ch = curl_init("https://www.google.com/");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
-if (curl_errno($ch)) {
-    echo 'Erreur cURL : ' . curl_error($ch);
-} else {
-    echo 'Succès : cURL fonctionne.';
-}
-curl_close($ch);
-
-error_reporting(E_ALL & ~E_DEPRECATED);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/error.log');
-
-echo "Chargement initial...<br>";
-
-if (!file_exists('vendor/autoload.php')) {
-    error_log("Fichier vendor/autoload.php manquant.");
-    exit("Erreur technique.");
-}
 require 'vendor/autoload.php';
-echo "Autoload OK<br>";
-
-if (!file_exists('config.php')) {
-    error_log("Fichier config.php manquant.");
-    exit("Erreur technique.");
-}
-require 'config.php'; // suppose que $pdo est défini ici
-echo "Config OK<br>";
 
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
+use Dotenv\Dotenv;
 
-$connectionString = "DefaultEndpointsProtocol=https;AccountName=noeltheostockage;AccountKey=BsY1hen4QgxqoPDYSKHam7J79XQL45A6xy6DE3knrxOGcQeUYEnak55r3LOnlTfTnG/PoyWlShTm+AStn1mEiw==;EndpointSuffix=core.windows.net";
-$containerName = "noeltheocontainer";
+// Charger les variables d'environnement depuis .env
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
+// Accéder aux variables d'environnement
+$accountName = $_ENV['AZURE_ACCOUNT_NAME'];
+$accountKey = $_ENV['AZURE_ACCOUNT_KEY'];
+$containerName = $_ENV['AZURE_CONTAINER_NAME'];
+
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=$accountName;AccountKey=$accountKey;EndpointSuffix=core.windows.net";
 $blobClient = BlobRestProxy::createBlobService($connectionString);
+
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
@@ -49,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     try {
         $content = fopen($file['tmp_name'], "r");
         $blobClient->createBlockBlob($containerName, $filename, $content);
-        $blobUrl = "https://noeltheostockage.blob.core.windows.net/$containerName/$filename";
+        $blobUrl = "https://$accountName.blob.core.windows.net/$containerName/$filename";
 
         $stmt = $pdo->prepare('INSERT INTO fichiers (nom, chemin, taille) VALUES (?, ?, ?)');
         $stmt->execute([$filename, $blobUrl, $file['size']]);
