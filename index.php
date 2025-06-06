@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require 'config.php';
 
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
