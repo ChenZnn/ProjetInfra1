@@ -1,6 +1,5 @@
 <?php
 require 'vendor/autoload.php';
-require 'config.php';
 
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
@@ -9,6 +8,8 @@ use Dotenv\Dotenv;
 // Charger les variables d'environnement depuis .env
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+
+require 'config.php';
 
 // Accéder aux variables d'environnement
 $accountName = $_ENV['AZURE_ACCOUNT_NAME'];
